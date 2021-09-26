@@ -1,0 +1,69 @@
+<div>
+  <div *ngIf="currentReview.review_id" class="edit-form">
+    <h4>Review</h4>
+    <form>
+      <div class="form-group">
+        <label for="title">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          [(ngModel)]="currentReview.name"
+          name="title"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Content</label>
+        <input
+          type="text"
+          class="form-control"
+          id="description"
+          [(ngModel)]="currentReview.content"
+          name="description"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Author</label>
+        <input
+          class="form-control"
+          id="subject"
+          required
+          [(ngModel)]="currentReview.author"
+          name="subject"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Rating</label>
+        <input
+          class="form-control"
+          id="address"
+          required
+          [(ngModel)]="currentReview.rating"
+          name="address"
+        />
+      </div>
+
+    </form>
+
+
+    <button class="badge badge-danger mr-2" (click)="deleteReview()">
+      Delete
+    </button>
+
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updateReview()"
+    >
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentReview.review_id">
+    <br />
+    <p>Cannot access this Review...</p>
+  </div>
+</div>

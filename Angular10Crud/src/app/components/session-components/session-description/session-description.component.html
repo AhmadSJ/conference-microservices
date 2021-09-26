@@ -1,0 +1,102 @@
+<div>
+  <div *ngIf="currentSession.session_id" class="edit-form">
+    <h4>Session</h4>
+    <form>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          [(ngModel)]="currentSession.name"
+          name="title"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input
+          type="text"
+          class="form-control"
+          id="description"
+          [(ngModel)]="currentSession.description"
+          name="description"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Subject</label>
+        <input
+          class="form-control"
+          id="subject"
+          required
+          [(ngModel)]="currentSession.subject"
+          name="subject"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Address</label>
+        <input
+          class="form-control"
+          id="address"
+          required
+          [(ngModel)]="currentSession.address"
+          name="address"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="start_date_time">Starting Date and Time</label>
+        <input
+          class="form-control"
+          id="start_date_time"
+          required
+          [(ngModel)]="currentSession.start_date_time"
+          name="start_date_time"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="end_date_time">Ending Date and Time</label>
+        <input
+          class="form-control"
+          id="end_date_time"
+          required
+          [(ngModel)]="currentSession.end_date_time"
+          name="end_date_time"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="max_participants">Maximum participants</label>
+        <input
+          class="form-control"
+          id="max_participants"
+          required
+          [(ngModel)]="currentSession.max_participants"
+          name="max_participants"
+        />
+      </div>
+
+    </form>
+
+
+    <button class="badge badge-danger mr-2" (click)="deleteSession()">
+      Delete
+    </button>
+
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updateSession()"
+    >
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentSession.session_id">
+    <br />
+    <p>Cannot access this Session...</p>
+  </div>
+</div>

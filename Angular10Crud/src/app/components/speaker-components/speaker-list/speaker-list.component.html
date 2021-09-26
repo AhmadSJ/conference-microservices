@@ -1,0 +1,72 @@
+<div class="list row">
+<!--  <div class="col-md-8">-->
+<!--    <div class="input-group mb-3">-->
+<!--      <input-->
+<!--        type="text"-->
+<!--        class="form-control"-->
+<!--        placeholder="Search by name"-->
+<!--        [(ngModel)]="name"-->
+<!--      />-->
+<!--      <div class="input-group-append">-->
+<!--        <button-->
+<!--          class="btn btn-outline-secondary"-->
+<!--          type="button"-->
+<!--          (click)="searchName()"-->
+<!--        >-->
+<!--          Search-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+  <div class="col-md-6">
+    <h4>Speakers List</h4>
+    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllSpeakers()">
+      Remove All
+    </button>
+
+    <a href="http://localhost:4200/add_speaker" class="m-3 btn btn-sm btn-info" role="button" >Add speaker</a>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let speaker of speakers; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveSpeaker(speaker, i)"
+      >
+        {{ speaker.first_name }}
+      </li>
+    </ul>
+
+
+
+  </div>
+  <div class="col-md-6">
+    <div *ngIf="currentSpeaker.speaker_id">
+      <h4>Speaker</h4>
+      <div>
+        <label><strong>First Name:</strong></label> {{ currentSpeaker.first_name }}
+      </div>
+      <div>
+        <label><strong>Last Name:</strong></label>
+        {{ currentSpeaker.last_name }}
+      </div>
+      <div>
+        <label><strong>Specialization:</strong></label>
+        {{ currentSpeaker.specialization }}
+      </div>
+      <div>
+        <label><strong>Address:</strong></label>
+        {{ currentSpeaker.bio }}
+      </div>
+
+      <a class="badge badge-warning" routerLink="/speakers/{{ currentSpeaker.speaker_id }}">
+        Edit
+      </a>
+    </div>
+
+    <div *ngIf="!((currentSpeaker | json) !=({} | json))">
+      <br />
+      <p>Please click on a Speaker...</p>
+    </div>
+  </div>
+</div>

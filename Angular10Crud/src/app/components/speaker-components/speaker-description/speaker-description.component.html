@@ -1,0 +1,69 @@
+<div>
+  <div *ngIf="currentSpeaker.speaker_id" class="edit-form">
+    <h4>Speaker</h4>
+    <form>
+      <div class="form-group">
+        <label for="title">First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          [(ngModel)]="currentSpeaker.first_name"
+          name="title"
+        />
+      </div>
+      <div class="form-group">
+        <label for="description">Last Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="description"
+          [(ngModel)]="currentSpeaker.last_name"
+          name="description"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Specialization</label>
+        <input
+          class="form-control"
+          id="subject"
+          required
+          [(ngModel)]="currentSpeaker.specialization"
+          name="subject"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Biography</label>
+        <input
+          class="form-control"
+          id="address"
+          required
+          [(ngModel)]="currentSpeaker.bio"
+          name="address"
+        />
+      </div>
+
+    </form>
+
+
+    <button class="badge badge-danger mr-2" (click)="deleteSpeaker()">
+      Delete
+    </button>
+
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updateSpeaker()"
+    >
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentSpeaker.speaker_id">
+    <br />
+    <p>Cannot access this Speaker...</p>
+  </div>
+</div>

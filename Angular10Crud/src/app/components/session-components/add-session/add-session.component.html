@@ -1,0 +1,90 @@
+<div>
+  <div class="submit-form">
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          required
+          [(ngModel)]="session.name"
+          name="title"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <input
+          class="form-control"
+          id="description"
+          required
+          [(ngModel)]="session.description"
+          name="description"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Subject</label>
+        <input
+          class="form-control"
+          id="subject"
+          required
+          [(ngModel)]="session.subject"
+          name="subject"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description">Address</label>
+        <input
+          class="form-control"
+          id="address"
+          required
+          [(ngModel)]="session.address"
+          name="address"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="start_date_time">Starting Date and Time</label>
+        <input
+          class="form-control"
+          id="start_date_time"
+          required
+          [(ngModel)]="session.start_date_time"
+          name="start_date_time"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="end_date_time">Ending Date and Time</label>
+        <input
+          class="form-control"
+          id="end_date_time"
+          required
+          [(ngModel)]="session.end_date_time"
+          name="end_date_time"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="max_participants">Maximum participants</label>
+        <input
+          class="form-control"
+          id="max_participants"
+          required
+          [(ngModel)]="session.max_participants"
+          name="max_participants"
+        />
+      </div>
+
+      <button (click)="saveSession()" class="btn btn-success">Submit</button>
+    </div>
+
+    <div *ngIf="submitted">
+      <h4>Tutorial was submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newSession()">Add Session</button>
+    </div>
+  </div>
+</div>

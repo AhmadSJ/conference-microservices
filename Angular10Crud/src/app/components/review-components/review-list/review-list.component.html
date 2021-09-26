@@ -1,0 +1,74 @@
+<div class="list row">
+<!--  <div class="col-md-8">-->
+<!--    <div class="input-group mb-3">-->
+<!--      <input-->
+<!--        type="text"-->
+<!--        class="form-control"-->
+<!--        placeholder="Search by name"-->
+<!--        [(ngModel)]="name"-->
+<!--      />-->
+<!--      <div class="input-group-append">-->
+<!--        <button-->
+<!--          class="btn btn-outline-secondary"-->
+<!--          type="button"-->
+<!--          (click)="searchName()"-->
+<!--        >-->
+<!--          Search-->
+<!--        </button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+
+  <div class="col-md-6">
+    <h4>Reviews List</h4>
+    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllReviews()">
+      Remove All
+    </button>
+
+    <a href="http://localhost:4200/add_review" class="m-3 btn btn-sm btn-info" role="button" >Add review</a>
+
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let review of reviews; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveReview(review, i)"
+      >
+        {{ review.name }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-md-6">
+    <div *ngIf="currentReview.review_id">
+      <h4>Review</h4>
+      <div>
+        <label><strong>Name:</strong></label> {{ currentReview.name }}
+      </div>
+      <div>
+        <label><strong>Review:</strong></label>
+        {{ currentReview.content }}
+      </div>
+      <div>
+        <label><strong>Author:</strong></label>
+        {{ currentReview.author }}
+      </div>
+      <div>
+        <label><strong>Rating:</strong></label>
+        {{ currentReview.rating }}
+      </div>
+
+      <div *ngIf="currentReview.sessionId!==null; else elseBlock"><strong>Session: </strong>{{currentReview.sessionId}}</div>
+      <div><ng-template #elseBlock><strong>Speaker: </strong>{{currentReview.speakerId}}</ng-template></div>
+
+      <a class="badge badge-warning" routerLink="/reviews/{{ currentReview.review_id }}">
+        Edit
+      </a>
+    </div>
+
+    <div *ngIf="!((currentReview | json) !=({} | json))">
+      <br />
+      <p>Please click on a Review...</p>
+    </div>
+  </div>
+</div>
